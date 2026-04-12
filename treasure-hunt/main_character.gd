@@ -2,14 +2,14 @@ extends CharacterBody3D
 
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 9.0
-const JUMP_VELOCITY = 4.5
+const JUMP_VELOCITY = 6
 const MOUSE_SENSITIVTY = 0.01
 
 var speed 
 
 # head bob
 const BOB_FREQUENCY = 2
-const  BOB_AMPLITUDE = 0.05
+const  BOB_AMPLITUDE = 0.07
 var bob_progress = 0.0
 
 @onready var head = $Head
@@ -34,7 +34,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 		
-	if Input.is_action_just_pressed(("sprint")):
+	print(speed)
+	if Input.is_action_pressed(("sprint")):
 		speed = SPRINT_SPEED
 	else:
 		speed = WALK_SPEED

@@ -20,7 +20,8 @@ points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4
 [node name="Template" type="Node3D" unique_id=1555560424]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1889943435]
-transform = Transform3D(0.9836847, 0, 0.17990112, -0.11219247, 0.7817164, 0.6134593, -0.14063166, -0.62363404, 0.7689625, 0, 2.1859794, 0)
+transform = Transform3D(0.37404025, -0.5387281, 0.75489485, -0.112192474, 0.78171647, 0.6134591, -0.9206013, -0.3141517, 0.23195207, 0, 2.1859794, 0)
+shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=905213940]
 environment = SubResource("Environment_dejbu")
