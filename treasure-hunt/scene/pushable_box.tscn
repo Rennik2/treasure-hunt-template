@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://deglhl1tt5iuo"]
+
+[ext_resource type="Script" uid="uid://bj4anktfvsk66" path="res://scripts/pushable_box.gd" id="1_3q05h"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1hxgd"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ywg2c"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hxgd"]
+albedo_color = Color(1, 0.3372549, 0.39607844, 1)
+metallic = 1.0
+metallic_specular = 0.4
+roughness = 0.42
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_68xgp"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hxgd"]
+
+[node name="PushableBox" type="RigidBody3D" unique_id=367739577]
+physics_material_override = SubResource("PhysicsMaterial_1hxgd")
+script = ExtResource("1_3q05h")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=152410833]
+mesh = SubResource("BoxMesh_ywg2c")
+surface_material_override/0 = SubResource("StandardMaterial3D_1hxgd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=715791911]
+shape = SubResource("BoxShape3D_68xgp")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1606093459]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1284036495]
+transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+shape = SubResource("BoxShape3D_1hxgd")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]

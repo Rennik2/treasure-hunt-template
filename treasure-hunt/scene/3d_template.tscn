@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://bt10ek6aukpg1"]
 
-[ext_resource type="Script" uid="uid://bb61y4e1sfpbk" path="res://main_character.gd" id="1_dejbu"]
-[ext_resource type="PackedScene" uid="uid://cqlx33foq0uej" path="res://level.blend" id="2_nvpb1"]
-[ext_resource type="Script" uid="uid://bj4anktfvsk66" path="res://pushable_box.gd" id="3_1hxgd"]
+[ext_resource type="Script" uid="uid://bb61y4e1sfpbk" path="res://scripts/main_character.gd" id="1_erjn1"]
+[ext_resource type="PackedScene" uid="uid://cqlx33foq0uej" path="res://level.blend" id="2_kfhuo"]
+[ext_resource type="PackedScene" uid="uid://deglhl1tt5iuo" path="res://scene/pushable_box.tscn" id="3_w4vuo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dejbu"]
 
@@ -18,20 +18,6 @@ sky = SubResource("Sky_dejbu")
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_1hxgd"]
 points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4760704, 0.49888408, 0.16971254, 0.5591441, 0.46417162, 0.23105091, -0.8035912, 0.32045516, 0.40741014, 0.651043, -0.24352328, -0.4827893, 0.59484255, 0.082213186, -0.3628679, -0.68231165, 0.2896967, 0.46904355, -0.65452886, -0.06627126, -0.12744367, 0.8427015, -0.33810276, -0.39343542, -0.6839421, -0.24471663, 0.43825462, 0.62330925, 0.20084947, 0.0841477, 0.977454, 0.11479468, -0.06820232, -0.9764576, -0.12927033, 0.20054972, -0.56312895, -0.4514544, -0.18552664, 0.59545326, -0.4534751, -0.27336287, 0.59226835, 0.40775412, -0.0069364863, -0.47682306, 0.49966025, 0.37582088, -0.5886136, 0.31695515, 0.111579016, 0.5630594, -0.48117727, -0.41725034, 0.5278656, -0.27049688, -0.48454633, -0.59697217, -0.06650971, -0.27974695, 0.90856135, 0.05333608, -0.25019687, -0.8807117, 0.20531891, 0.263647, -0.90277094, -0.1273943, 0.29336792, 0.8715263, -0.15719566, 0.3734115, -0.5263189, -0.32824618, 0.4996626, 0.47664148, -0.0068885577, 0.053105574, 0.8750009, 0.32470253, -0.15454252, -0.5908538, 0.4658794, -0.09727988, -0.7823577, -0.39818847, -0.3876489, -0.49817133, 0.31564978, -0.30067965, -0.58799505, -0.38890144)
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1hxgd"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ywg2c"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hxgd"]
-albedo_color = Color(1, 0.3372549, 0.39607844, 1)
-metallic = 1.0
-metallic_specular = 0.4
-roughness = 0.42
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_68xgp"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1hxgd"]
 
 [node name="Template" type="Node3D" unique_id=1555560424]
 
@@ -49,7 +35,7 @@ size = Vector3(20, 0.1, 20)
 
 [node name="Player" type="CharacterBody3D" parent="." unique_id=1070909803]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.60107327, 0)
-script = ExtResource("1_dejbu")
+script = ExtResource("1_erjn1")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=170394002]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1600296, 0)
@@ -68,27 +54,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.26416135, 0)
 [node name="Enviroment" type="Node3D" parent="." unique_id=475328896]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3712578, 1, -4.0255446)
 
-[node name="level" parent="Enviroment" unique_id=144879651 instance=ExtResource("2_nvpb1")]
+[node name="level" parent="Enviroment" unique_id=144879651 instance=ExtResource("2_kfhuo")]
 
-[node name="PushableBox" type="RigidBody3D" parent="." unique_id=67960995]
+[node name="PushableBox" parent="." unique_id=367739577 instance=ExtResource("3_w4vuo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.7833731, -2.9700093)
-physics_material_override = SubResource("PhysicsMaterial_1hxgd")
-script = ExtResource("3_1hxgd")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="PushableBox" unique_id=2123621669]
-mesh = SubResource("BoxMesh_ywg2c")
-surface_material_override/0 = SubResource("StandardMaterial3D_1hxgd")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PushableBox" unique_id=1897150405]
-shape = SubResource("BoxShape3D_68xgp")
-
-[node name="Area3D" type="Area3D" parent="PushableBox" unique_id=813369343]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PushableBox/Area3D" unique_id=487296633]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
-shape = SubResource("BoxShape3D_1hxgd")
-
-[connection signal="body_entered" from="PushableBox/Area3D" to="PushableBox" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="PushableBox/Area3D" to="PushableBox" method="_on_area_3d_body_exited"]
 
 [editable path="Enviroment/level"]
+[editable path="PushableBox"]
