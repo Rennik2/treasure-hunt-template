@@ -15,6 +15,10 @@ run/main_scene="uid://bt10ek6aukpg1"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[editor]
+
+movie_writer/fps=120
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/godot_super-wakatime/plugin.cfg")

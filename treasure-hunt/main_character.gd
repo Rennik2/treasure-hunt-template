@@ -2,7 +2,7 @@ extends CharacterBody3D
 
 const WALK_SPEED = 5.0
 const SPRINT_SPEED = 9.0
-const JUMP_VELOCITY = 6
+const JUMP_VELOCITY = 5
 const MOUSE_SENSITIVTY = 0.01
 
 var speed 
@@ -57,7 +57,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		# adds a amount of inertia when in air
 		velocity.x = lerp(velocity.x, direction.x * speed, delta * 4)
-		velocity.y= lerp(velocity.y, direction.y * speed, delta * 4)
+		velocity.z= lerp(velocity.z, direction.z * speed, delta * 4)
 	
 	# camera head bob 
 	bob_progress += delta * velocity.length() * float(is_on_floor())
