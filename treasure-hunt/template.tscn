@@ -23,10 +23,15 @@ points = PackedVector3Array(-0.12520654, -0.532801, -0.4805069, 0.022783129, 0.4
 
 [sub_resource type="BoxMesh" id="BoxMesh_ywg2c"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1hxgd"]
+albedo_color = Color(1, 0.3372549, 0.39607844, 1)
+metallic = 1.0
+metallic_specular = 0.4
+roughness = 0.42
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_68xgp"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_djkc3"]
-size = Vector3(1, 1, 1.1883545)
+[sub_resource type="BoxShape3D" id="BoxShape3D_1hxgd"]
 
 [node name="Template" type="Node3D" unique_id=1555560424]
 
@@ -72,15 +77,16 @@ script = ExtResource("3_1hxgd")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PushableBox" unique_id=2123621669]
 mesh = SubResource("BoxMesh_ywg2c")
+surface_material_override/0 = SubResource("StandardMaterial3D_1hxgd")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PushableBox" unique_id=1897150405]
 shape = SubResource("BoxShape3D_68xgp")
 
 [node name="Area3D" type="Area3D" parent="PushableBox" unique_id=813369343]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PushableBox/Area3D" unique_id=1377974497]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PushableBox/Area3D" unique_id=487296633]
 transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
-shape = SubResource("BoxShape3D_djkc3")
+shape = SubResource("BoxShape3D_1hxgd")
 
 [connection signal="body_entered" from="PushableBox/Area3D" to="PushableBox" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="PushableBox/Area3D" to="PushableBox" method="_on_area_3d_body_exited"]
