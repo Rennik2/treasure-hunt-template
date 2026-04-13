@@ -15,6 +15,10 @@ run/main_scene="uid://bt10ek6aukpg1"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/resizable=false
+
 [editor]
 
 movie_writer/fps=120

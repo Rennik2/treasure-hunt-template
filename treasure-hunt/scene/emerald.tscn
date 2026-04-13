@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://itiul8wthhh8"]
+
+[ext_resource type="PackedScene" uid="uid://bovno2i82eiiu" path="res://assets/turtle.fbx" id="1_lljtm"]
+[ext_resource type="Script" uid="uid://ch73lbxiyvo3e" path="res://scripts/turtle_animation.gd" id="2_psjoj"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_hq4v8"]
+
+[node name="Emerald" type="Node3D" unique_id=1125366754]
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1713913196]
+
+[node name="turtle" parent="Area3D" unique_id=1843827375 instance=ExtResource("1_lljtm")]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, -0.16529211, -0.034798265)
+script = ExtResource("2_psjoj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1420957443]
+shape = SubResource("SphereShape3D_hq4v8")
+
+[connection signal="body_entered" from="Area3D" to="Area3D/turtle" method="_on_area_3d_body_entered"]
+
+[editable path="Area3D/turtle"]
